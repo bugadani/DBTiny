@@ -1,0 +1,21 @@
+{
+  "name": "bugadani/dbtiny",
+  "description": "A small database abstraction layer",
+  "minimum-stability": "dev",
+  "license": "mit",
+  "authors": [
+    {
+      "name": "Dániel Buga",
+      "email": "bugadani@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "DBTiny\\": "src/",
+      "DBTiny\\Test\\": "test/"
+    }
+  }
+}
