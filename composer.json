@@ -14,7 +14,11 @@
   },
   "autoload": {
     "psr-4": {
-      "DBTiny\\": "src/",
+      "DBTiny\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
       "DBTiny\\Test\\": "test/"
     }
   }
