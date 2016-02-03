@@ -8,27 +8,23 @@ use DBTiny\Platform\MySQL as MySQLPlatform;
 
 class MySQL extends PDODriver
 {
-    public function __construct(array $params, $user, $password, array $options = [])
+    public function __construct($params, $user, $password, array $options = [])
     {
         parent::__construct(new MySQLPlatform());
 
         $this->connect($this->constructDsn($params), $user, $password, $options);
     }
 
-    private function constructDsn(array $params)
+    private function constructDsn($params)
     {
-        if (isset($params['dsn'])) {
-            return $params['dsn'];
+        if (is_string($params)) {
+            //dsn
+            return $params;
         }
-        $dsn = 'mysql:';
-
-        $parts = ['host', 'port', 'dbname', 'unix_socket', 'charset'];
-        foreach ($parts as $part) {
-            if (isset($params[ $part ])) {
-                $dsn .= "{$part}={$params[$part]};";
-            }
+        if (!($params instanceof MySQLConnectionConfig)) {
+            $params = new MySQLConnectionConfig($params);
         }
 
-        return $dsn;
+        return (string)$params;
     }
 }
